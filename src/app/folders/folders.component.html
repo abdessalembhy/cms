@@ -1,0 +1,39 @@
+<div class="columns is-multiline">
+  <ng-container *ngFor="let myTit of folders">
+    <div *ngIf="myTit.published" class="column is-one-quarter">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            {{myTit.title + ' rank : '+ myTit.rank}}
+          </p>
+          <a href="#" class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <i class="fas fa-angle-down" aria-hidden="true"></i>
+            </span>
+          </a>
+        </header>
+        <div class="card-content">
+          <div class="content">
+            <figure *ngIf='!toDelete || clickedId!==myTit.id' class="image is-4by3">
+              <img src="{{myTit.img}}" alt="Placeholder image">
+            </figure>
+            <div  *ngIf= 'toDelete && clickedId===myTit.id ' class='content'>
+              <a class='button is-success' (click)= 'delete(myTit.id)' > Confirm</a>
+              <a class="button is-danger" (click)='toDelete=false'  >Cancel</a>
+              <a *ngIf= 'toConfirme '> ce fonction est efface</a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="card-footer">
+          <a class="card-footer-item" (click)="showOpen(myTit.ip)">open</a>
+          <a class="card-footer-item">Edit</a>
+          <a class="card-footer-item"(click)="showDelete(myTit.id)" >Delete
+          </a>
+        </footer>
+      </div>
+
+    </div>
+  </ng-container>
+
+</div>
